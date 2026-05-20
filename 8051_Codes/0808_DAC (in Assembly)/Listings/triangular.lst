@@ -1,0 +1,40 @@
+A51 MACRO ASSEMBLER  TRIANGULAR                                                           02/10/2026 03:18:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\triangular.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE triangular.a51 SET(SMALL) DEBUG PRINT(.\Listings\triangular.lst) OBJECT
+                      (.\Objects\triangular.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 802E              2      SJMP START
+0030                   3      ORG 0030H
+0030 74FF              4     START: MOV A, #0FFH
+0032 04                5     BACK1: INC A
+0033 F5A0              6      MOV P2, A
+0035 B4FFFA            7      CJNE A, #0FFH, BACK1
+0038 14                8     BACK2: DEC A
+0039 F5A0              9      MOV P2, A
+003B B400FA           10      CJNE A, #00H, BACK2
+003E 80F2             11      SJMP BACK1
+                      12      END 
+A51 MACRO ASSEMBLER  TRIANGULAR                                                           02/10/2026 03:18:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK1. . . . . . .  C ADDR   0032H   A   
+BACK2. . . . . . .  C ADDR   0038H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   0030H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

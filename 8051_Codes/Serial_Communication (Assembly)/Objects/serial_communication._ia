@@ -1,0 +1,1 @@
+"serial_communication.a51" SET (SMALL) DEBUG PRINT(.\Listings\serial_communication.lst) OBJECT(.\Objects\serial_communication.obj) EP

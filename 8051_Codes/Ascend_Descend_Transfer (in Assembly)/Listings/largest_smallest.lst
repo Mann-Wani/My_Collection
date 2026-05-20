@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  LARGEST_SMALLEST                                                     02/03/2026 09:42:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\largest_smallest.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE largest_smallest.a51 SET(SMALL) DEBUG PRINT(.\Listings\largest_smallest
+                      .lst) OBJECT(.\Objects\largest_smallest.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H 
+                       2             
+                       3     ; SAVE LARGEST IN 34 , SMALLEST IN 35 
+                       4     ; ARRAY IN 30,31,32,33 
+                       5     ; ARRAY POINTER IN 40 
+                       6     ; U NEED TO COMPARE [40H] AND [40H+I]
+                       7     
+0000 7830              8     MOV R0,#30H
+0002 AA29              9     MOV R2, 29H  
+0004 E6               10     MOV A, @R0  
+0005 F540             11     MOV 40H, A
+0007 F541             12     MOV 41H, A
+0009 08               13     INC R0
+000A 1A               14     DEC R2
+000B                  15     NEXT: 
+000B E6               16     MOV A, @R0
+000C B54002           17     CJNE A,40H, CHK_L
+000F 8004             18     SJMP CHK_S
+0011                  19     CHK_L :
+0011 4002             20     JC CHK_S
+0013 F540             21     MOV 40H, A
+0015                  22     CHK_S :
+0015 B54102           23     CJNE A,41H,CHK_S2
+0018 8004             24     SJMP CONT
+001A                  25     CHK_S2 :
+001A 5002             26     JNC CONT 
+001C F541             27     MOV 41H,A
+001E                  28     CONT:
+001E 08               29     INC R0
+001F DAEA             30     DJNZ R2, NEXT
+0021 80FE             31     HERE: SJMP HERE 
+                      32     END
+A51 MACRO ASSEMBLER  LARGEST_SMALLEST                                                     02/03/2026 09:42:22 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHK_L. . . . . . .  C ADDR   0011H   A   
+CHK_S. . . . . . .  C ADDR   0015H   A   
+CHK_S2 . . . . . .  C ADDR   001AH   A   
+CONT . . . . . . .  C ADDR   001EH   A   
+HERE . . . . . . .  C ADDR   0021H   A   
+NEXT . . . . . . .  C ADDR   000BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

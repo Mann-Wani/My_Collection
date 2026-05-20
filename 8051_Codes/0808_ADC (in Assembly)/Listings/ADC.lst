@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  ADC                                                                  02/17/2026 05:33:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ADC.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ADC.a51 SET(SMALL) DEBUG PRINT(.\Listings\ADC.lst) OBJECT(.\Objects\ADC
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+  00A0                 3     CHA    EQU P2.0
+  00A1                 4     CHB    EQU P2.1
+  00A2                 5     CHC    EQU P2.2
+  0082                 6     ALE    EQU P0.2
+  0081                 7     START  EQU P0.1
+  0080                 8     OE     EQU P0.0
+  0084                 9     EOC    EQU P0.4
+                      10     
+0000                  11     ORG 0000H
+0000 802E             12     SJMP MAIN
+                      13     
+0030                  14     ORG 0030H
+0030                  15     MAIN:
+0030 75B0FF           16         MOV P3,#0FFH
+0033 75A000           17         MOV P2,#00H
+0036 7580F0           18         MOV P0,#0F0H
+                      19     
+0039                  20     BACK:
+0039 D2A0             21         SETB CHA
+003B C2A1             22         CLR CHB
+003D C2A2             23         CLR CHC
+                      24     
+003F D282             25         SETB ALE
+0041 00               26         NOP
+0042 C282             27         CLR ALE
+                      28     
+0044 D281             29         SETB START
+0046 00               30         NOP
+0047 C281             31         CLR START
+                      32     
+0049                  33     CHECK:
+0049 3084FD           34         JNB EOC,CHECK
+                      35     
+004C D280             36         SETB OE
+004E 00               37         NOP
+004F E5B0             38         MOV A,P3
+0051 F590             39         MOV P1,A
+0053 C280             40         CLR OE
+                      41     
+0055 80E2             42         SJMP BACK
+                      43     
+                      44     END
+A51 MACRO ASSEMBLER  ADC                                                                  02/17/2026 05:33:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ALE. . . . . . . .  B ADDR   0080H.2 A   
+BACK . . . . . . .  C ADDR   0039H   A   
+CHA. . . . . . . .  B ADDR   00A0H.0 A   
+CHB. . . . . . . .  B ADDR   00A0H.1 A   
+CHC. . . . . . . .  B ADDR   00A0H.2 A   
+CHECK. . . . . . .  C ADDR   0049H   A   
+EOC. . . . . . . .  B ADDR   0080H.4 A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+OE . . . . . . . .  B ADDR   0080H.0 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+START. . . . . . .  B ADDR   0080H.1 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

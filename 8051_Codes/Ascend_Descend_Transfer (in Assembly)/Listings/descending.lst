@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  DESCENDING                                                           02/03/2026 09:43:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\descending.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE descending.a51 SET(SMALL) DEBUG PRINT(.\Listings\descending.lst) OBJECT
+                      (.\Objects\descending.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 AA29              2             MOV R2,29H
+0002                   3             OUTER :
+0002 7830              4             MOV R0, #30H
+0004 EA                5             MOV A,R2
+0005 FB                6             MOV R3,A
+0006 1B                7             DEC R3
+0007                   8             INNER :
+0007 E6                9             MOV A , @R0
+0008 08               10             INC R0
+0009 86F0             11             MOV B,@R0
+000B B5F002           12             CJNE A,B,COMP
+000E 8007             13             SJMP NOSWAP
+0010                  14             COMP:
+0010 5005             15             JNC NOSWAP
+0012 F6               16             MOV @R0,A
+0013 18               17             DEC R0
+0014 A6F0             18             MOV @R0, B
+0016 08               19             INC R0
+0017                  20             NOSWAP :
+0017 DBEE             21             DJNZ R3, INNER
+0019 DAE7             22             DJNZ R2, OUTER 
+001B 80FE             23             HERE:SJMP HERE
+                      24             END 
+A51 MACRO ASSEMBLER  DESCENDING                                                           02/03/2026 09:43:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMP . . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   001BH   A   
+INNER. . . . . . .  C ADDR   0007H   A   
+NOSWAP . . . . . .  C ADDR   0017H   A   
+OUTER. . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

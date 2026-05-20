@@ -1,0 +1,34 @@
+A51 MACRO ASSEMBLER  MULTIPLICATION                                                       02/03/2026 01:42:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\multiplication.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE multiplication.a51 SET(SMALL) DEBUG PRINT(.\Listings\multiplication.lst
+                      ) OBJECT(.\Objects\multiplication.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2             
+0000 E530              3     MOV A,30H 
+0002 8531F0            4     MOV B,31H
+0005 A4                5     MUL AB
+0006 85F032            6     MOV 32H,B
+0009 F533              7     MOV 33H, A
+                       8     
+                       9     END
+A51 MACRO ASSEMBLER  MULTIPLICATION                                                       02/03/2026 01:42:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

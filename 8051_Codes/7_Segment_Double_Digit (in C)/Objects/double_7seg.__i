@@ -1,0 +1,1 @@
+"double_7seg.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\double_7seg.lst) TABS (2) OBJECT(.\Objects\double_7seg.obj)

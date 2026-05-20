@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  SERIAL_COMMUNICATION2                                                02/17/2026 09:58:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\serial-communication2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE serial-communication2.a51 SET(SMALL) DEBUG PRINT(.\Listings\serial-comm
+                      unication2.lst) OBJECT(.\Objects\serial-communication2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H 
+0000 020030            2      LJMP START 
+0030                   3      ORG 0030H 
+0030 758920            4     START: MOV TMOD, #20H ; select timer 1 mode 2 
+0033 758DFA            5      MOV TH1, #0FAH  ; load count to get reqd. baud rate of 9600 
+0036 759850            6      MOV SCON, #50H  ; initialise uart in mode 2 
+                       7          ; 8 bit data and 1 stop bit 
+0039 D28E              8      SETB TR1   ; start timer 
+003B 7443              9     LOOP: MOV A, #'C'   ; load 1st letter ‘C’ in a 
+003D 115D             10      ACALL LOAD   ; call load subroutine 
+003F 744F             11      MOV A, #'O'   ; load 2nd letter ‘W’ in a 
+0041 115D             12      ACALL LOAD   ; call load subroutine 
+0043 7445             13      MOV A, #'E'   ; load 3rd letter ‘I’ in a 
+0045 115D             14      ACALL LOAD   ; call load subroutine 
+0047 7450             15      MOV A, #'P'   ; load 4th letter ‘T’ in a 
+0049 115D             16      ACALL LOAD   ; call load subroutine 
+                      17      
+004B 744D             18      MOV A, #'M'    
+004D 115D             19      ACALL LOAD
+004F 7441             20     MOV A, #'A'    
+0051 115D             21      ACALL LOAD
+0053 744E             22     MOV A, #'N'    
+0055 115D             23      ACALL LOAD
+0057 744E             24     MOV A, #'N'    
+0059 115D             25      ACALL LOAD 
+005B 80DE             26      SJMP LOOP   ; repeat steps 
+005D F599             27     LOAD:  MOV SBUF, A 
+005F 3099FD           28     HERE:  JNB TI, HERE  ; Check for transmit interrupt flag 
+0062 C299             29       CLR TI   ; Clear transmit interrupt flag 
+0064 22               30              RET 
+                      31       END 
+A51 MACRO ASSEMBLER  SERIAL_COMMUNICATION2                                                02/17/2026 09:58:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   005FH   A   
+LOAD . . . . . . .  C ADDR   005DH   A   
+LOOP . . . . . . .  C ADDR   003BH   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+START. . . . . . .  C ADDR   0030H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

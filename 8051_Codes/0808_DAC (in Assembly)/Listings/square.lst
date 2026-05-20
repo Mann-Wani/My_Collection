@@ -1,0 +1,41 @@
+A51 MACRO ASSEMBLER  SQUARE                                                               02/10/2026 03:20:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\square.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE square.a51 SET(SMALL) DEBUG PRINT(.\Listings\square.lst) OBJECT(.\Objec
+                      ts\square.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 802E              2      SJMP START
+0030                   3      ORG 0030H
+0030 7400              4     START: MOV A, #0
+0032 F5A0              5     BACK: MOV P2, A
+0034 1139              6      ACALL DELAY
+0036 F4                7      CPL A
+0037 80F9              8      SJMP BACK
+0039 7AFF              9     DELAY: MOV R2, #0FFH
+003B DAFE             10     HERE: DJNZ R2, HERE
+003D 22               11      RET
+                      12      END
+A51 MACRO ASSEMBLER  SQUARE                                                               02/10/2026 03:20:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0032H   A   
+DELAY. . . . . . .  C ADDR   0039H   A   
+HERE . . . . . . .  C ADDR   003BH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   0030H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

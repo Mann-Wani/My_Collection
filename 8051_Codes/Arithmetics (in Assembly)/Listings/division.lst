@@ -1,0 +1,34 @@
+A51 MACRO ASSEMBLER  DIVISION                                                             02/03/2026 01:44:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\division.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE division.a51 SET(SMALL) DEBUG PRINT(.\Listings\division.lst) OBJECT(.\O
+                      bjects\division.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2             
+0000 E530              3     MOV A,30H 
+0002 8531F0            4     MOV B,31H 
+0005 84                5     DIV AB
+0006 F532              6     MOV 32H,A
+0008 85F033            7     MOV 33H,B
+                       8     
+                       9     END
+A51 MACRO ASSEMBLER  DIVISION                                                             02/03/2026 01:44:58 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,44 @@
+A51 MACRO ASSEMBLER  BLOCK_TRANSFER                                                       05/08/2026 00:55:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\block_transfer.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE block_transfer.a51 SET(SMALL) DEBUG PRINT(.\Listings\block_transfer.lst
+                      ) OBJECT(.\Objects\block_transfer.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000 7830              3         MOV R0, #30H      ; Pointer to Array 1
+0002 7940              4         MOV R1, #40H      ; Pointer to Array 2
+0004 7A03              5         MOV R2, #03H       ; Number of bytes to exchange
+                       6     
+0006                   7     EXCHANGE:
+0006 E6                8         MOV A, @R0        ; Read element from Array 1
+0007 C7                9         XCH A, @R1        ; Exchange with Array 2 element
+0008 F6               10         MOV @R0, A        ; Store back to Array 1
+                      11     
+0009 08               12         INC R0            ; Next locations
+000A 09               13         INC R1
+000B DAF9             14         DJNZ R2, EXCHANGE
+                      15     
+000D 80FE             16     HERE: SJMP HERE       ; Stop
+                      17     
+                      18     END
+A51 MACRO ASSEMBLER  BLOCK_TRANSFER                                                       05/08/2026 00:55:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EXCHANGE . . . . .  C ADDR   0006H   A   
+HERE . . . . . . .  C ADDR   000DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

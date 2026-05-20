@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\division.obj" 
+TO ".\Objects\arithmetics" 
+PRINT(".\Listings\arithmetics.m51")

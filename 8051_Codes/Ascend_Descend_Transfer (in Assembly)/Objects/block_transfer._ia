@@ -1,0 +1,1 @@
+"block_transfer.a51" SET (SMALL) DEBUG PRINT(.\Listings\block_transfer.lst) OBJECT(.\Objects\block_transfer.obj) EP

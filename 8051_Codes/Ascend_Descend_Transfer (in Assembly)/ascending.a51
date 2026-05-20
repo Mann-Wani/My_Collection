@@ -1,0 +1,29 @@
+ORG 0000H
+    MOV R2,#03H        ; number of elements
+
+OUTER:
+    MOV R0,#30H
+    MOV A,R2
+    DEC A             ; A = R2 - 1
+    MOV R3,A          ; inner loop count (via A ??)
+
+INNER:
+    MOV A,@R0
+    INC R0
+    MOV B,@R0
+    CJNE A,B,COMP
+    SJMP NOSWAP
+
+COMP:
+    JC NOSWAP
+    MOV @R0,A
+    DEC R0
+    MOV @R0,B
+    INC R0
+
+NOSWAP:
+    DJNZ R3,INNER
+    DJNZ R2,OUTER
+
+HERE: SJMP HERE
+END

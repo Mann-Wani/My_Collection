@@ -1,0 +1,146 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              04/05/2026 16:01:50 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define display_port P1      //Data pins connected to port 2 on microcontroller
+   3          sbit rs = P0^0;  //RS pin connected to pin 2 of port 3
+   4          sbit rw = P0^1;  // RW pin connected to pin 3 of port 3
+   5          sbit e =  P0^2;  //E pin connected to pin 4 of port 3
+   6          sbit C4 = P3^3;     // Connecting keypad to Port 1
+   7          sbit C3 = P3^2;
+   8          sbit C2 = P3^1;
+   9          sbit C1 = P3^0;
+  10          sbit R4 = P2^3;
+  11          sbit R3 = P2^2;
+  12          sbit R2 = P2^1;
+  13          sbit R1 = P2^0;
+  14          void msdelay(unsigned int time)  // Function for creating delay in milliseconds.
+  15          {
+  16   1          unsigned i,j ;
+  17   1          for(i=0;i<time;i++)    
+  18   1          for(j=0;j<1275;j++);
+  19   1      }
+  20          void lcd_cmd(unsigned char command)  //Function to send command instruction to LCD
+  21          {
+  22   1          display_port = command;
+  23   1          rs= 0;
+  24   1          rw=0;
+  25   1          e=1;
+  26   1          msdelay(1);
+  27   1          e=0;
+  28   1      }
+  29          void lcd_data(unsigned char disp_data)  //Function to send display data to LCD
+  30          {
+  31   1          display_port = disp_data;
+  32   1          rs= 1;
+  33   1          rw=0;
+  34   1          e=1;
+  35   1          msdelay(1);
+  36   1          e=0;
+  37   1      }
+  38           void lcd_init()    //Function to prepare the LCD  and get it ready
+  39          {
+  40   1          lcd_cmd(0x38);  // for using 2 lines and 5X7 matrix of LCD
+  41   1          msdelay(10);
+  42   1          lcd_cmd(0x0F);  // turn display ON, cursor blinking
+  43   1          msdelay(10);
+  44   1          lcd_cmd(0x01);  //clear screen
+  45   1          msdelay(10);
+  46   1          lcd_cmd(0x81);  // bring cursor to position 1 of line 1
+  47   1          msdelay(10);
+  48   1      }
+  49          void row_finder1() //Function for finding the row for column 1
+  50          {
+  51   1      R1=R2=R3=R4=1;
+  52   1      C1=C2=C3=C4=0;
+  53   1      if(R1==0)
+  54   1      lcd_data('1');
+C51 COMPILER V9.60.7.0   MAIN                                                              04/05/2026 16:01:50 PAGE 2   
+
+  55   1      if(R2==0)
+  56   1      lcd_data('4');
+  57   1      if(R3==0)
+  58   1      lcd_data('7');
+  59   1      if(R4==0)
+  60   1      lcd_data('*');
+  61   1      }
+  62          void row_finder2() //Function for finding the row for column 2
+  63          {
+  64   1      R1=R2=R3=R4=1;
+  65   1      C1=C2=C3=C4=0;
+  66   1      if(R1==0)
+  67   1      lcd_data('2');
+  68   1      if(R2==0)
+  69   1      lcd_data('5');
+  70   1      if(R3==0)
+  71   1      lcd_data('8');
+  72   1      if(R4==0)
+  73   1      lcd_data('0');
+  74   1      }
+  75          void row_finder3() //Function for finding the row for column 3
+  76          {
+  77   1      R1=R2=R3=R4=1;
+  78   1      C1=C2=C3=C4=0;
+  79   1      if(R1==0)
+  80   1      lcd_data('3');
+  81   1      if(R2==0)
+  82   1      lcd_data('6');
+  83   1      if(R3==0)
+  84   1      lcd_data('9');
+  85   1      if(R4==0)
+  86   1      lcd_data('#');
+  87   1      }
+  88          void row_finder4() //Function for finding the row for column 4
+  89          {
+  90   1      R1=R2=R3=R4=1;
+  91   1      C1=C2=C3=C4=0;
+  92   1      if(R1==0)
+  93   1      lcd_data('A');
+  94   1      if(R2==0)
+  95   1      lcd_data('B');
+  96   1      if(R3==0)
+  97   1      lcd_data('C');
+  98   1      if(R4==0)
+  99   1      lcd_data('D');
+ 100   1      }
+ 101          void main()
+ 102          {
+ 103   1          lcd_init();
+ 104   1          while(1)
+ 105   1          {    
+ 106   2              msdelay(30); 
+ 107   2              C1=C2=C3=C4=1;
+ 108   2                R1=R2=R3=R4=0;
+ 109   2                if(C1==0)
+ 110   2                row_finder1();
+ 111   2                else if(C2==0)
+ 112   2                 row_finder2();
+ 113   2                 else if(C3==0)
+ 114   2              row_finder3();
+ 115   2              else if(C4==0)
+ 116   2              row_finder4();
+C51 COMPILER V9.60.7.0   MAIN                                                              04/05/2026 16:01:50 PAGE 3   
+
+ 117   2          }
+ 118   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    356    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

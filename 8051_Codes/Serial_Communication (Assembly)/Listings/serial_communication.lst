@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  SERIAL_COMMUNICATION                                                 02/17/2026 09:52:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\serial_communication.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE serial_communication.a51 SET(SMALL) DEBUG PRINT(.\Listings\serial_commu
+                      nication.lst) OBJECT(.\Objects\serial_communication.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020030            2         LJMP START
+                       3     
+0030                   4     ORG 0030H
+0030                   5     START:
+0030 758920            6         MOV TMOD, #20H      ; Timer1 Mode2 (auto reload)
+0033 758DFA            7         MOV TH1, #0FAH      ; 4800 baud for 11.0592MHz crystal
+0036 759850            8         MOV SCON, #50H      ; Serial Mode1, 8-bit UART
+0039 D28E              9         SETB TR1            ; Start Timer1
+                      10     
+003B                  11     AGAIN:
+003B 75994D           12         MOV SBUF, #'M'
+003E                  13     BACK1:
+003E 3099FD           14         JNB TI, BACK1
+0041 C299             15         CLR TI
+                      16             
+0043                  17     AGAIN2:
+0043 759961           18         MOV SBUF, #'a'
+0046                  19     BACK2:
+0046 3099FD           20         JNB TI, BACK2
+0049 C299             21         CLR TI
+004B 80EE             22         SJMP AGAIN
+                      23     
+                      24     END
+A51 MACRO ASSEMBLER  SERIAL_COMMUNICATION                                                 02/17/2026 09:52:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   003BH   A   
+AGAIN2 . . . . . .  C ADDR   0043H   A   
+BACK1. . . . . . .  C ADDR   003EH   A   
+BACK2. . . . . . .  C ADDR   0046H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+START. . . . . . .  C ADDR   0030H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

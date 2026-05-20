@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  ASCENDING                                                            02/03/2026 10:03:04 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ascending.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ascending.a51 SET(SMALL) DEBUG PRINT(.\Listings\ascending.lst) OBJECT(.
+                      \Objects\ascending.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 7A03              2         MOV R2,#03H        ; number of elements
+                       3     
+0002                   4     OUTER:
+0002 7830              5         MOV R0,#30H
+0004 EA                6         MOV A,R2
+0005 14                7         DEC A             ; A = R2 - 1
+0006 FB                8         MOV R3,A          ; inner loop count (via A ??)
+                       9     
+0007                  10     INNER:
+0007 E6               11         MOV A,@R0
+0008 08               12         INC R0
+0009 86F0             13         MOV B,@R0
+000B B5F002           14         CJNE A,B,COMP
+000E 8007             15         SJMP NOSWAP
+                      16     
+0010                  17     COMP:
+0010 4005             18         JC NOSWAP
+0012 F6               19         MOV @R0,A
+0013 18               20         DEC R0
+0014 A6F0             21         MOV @R0,B
+0016 08               22         INC R0
+                      23     
+0017                  24     NOSWAP:
+0017 DBEE             25         DJNZ R3,INNER
+0019 DAE7             26         DJNZ R2,OUTER
+                      27     
+001B 80FE             28     HERE: SJMP HERE
+                      29     END
+A51 MACRO ASSEMBLER  ASCENDING                                                            02/03/2026 10:03:04 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMP . . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   001BH   A   
+INNER. . . . . . .  C ADDR   0007H   A   
+NOSWAP . . . . . .  C ADDR   0017H   A   
+OUTER. . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

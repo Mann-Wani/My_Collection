@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  SUBTRACTION                                                          02/03/2026 01:39:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\subtraction.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE subtraction.a51 SET(SMALL) DEBUG PRINT(.\Listings\subtraction.lst) OBJE
+                      CT(.\Objects\subtraction.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2             
+0000 E530              3     MOV A,30H
+0002 C3                4     CLR C 
+0003 9531              5     SUBB A,31H 
+0005 F532              6     MOV 32H,A
+0007 7400              7     MOV A, #00H
+0009 3400              8     ADDC A,#00H
+000B F533              9     MOV 33H, A 
+                      10     
+                      11     END
+A51 MACRO ASSEMBLER  SUBTRACTION                                                          02/03/2026 01:39:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,1 @@
+"ADC.a51" SET (SMALL) DEBUG PRINT(.\Listings\ADC.lst) OBJECT(.\Objects\ADC.obj) EP
